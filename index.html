@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucian - Fotograf</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== HEADER ===== */
+        header {
+            position: relative;
+            height: 300px; /* mai mic decât jumătate de ecran */
+            overflow: hidden;
+            text-align: center;
+            color: #fff;
+        }
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        .hero-text {
+            position: relative;
+            z-index: 2;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        header button {
+            margin-top: 15px;
+            padding: 10px 25px;
+            border-radius: 25px;
+            background: #c6a64f;
+            color: #111;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        header button:hover {
+            background: #d7b65c;
+            transform: translateY(-2px);
+        }
+
+        /* ===== NAV ===== */
+        nav.sticky {
+            background: #111;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav.sticky a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        nav.sticky a.active {
+            color: #c6a64f;
+        }
+
+        /* ===== DESPRE ===== */
+        #despre {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* ===== PACHETE ===== */
+        .pachete {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .pachet {
+            max-width: 400px;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        /* ===== OFERTA ===== */
+        .btn-oferta-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        #formular-oferta {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+        #formular-oferta.show {
+            opacity: 1;
+        }
+        #formular-oferta .formular-content {
+            background: #f0f0f0;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 700px;
+            margin: 20px auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-family: 'Poppins', sans-serif;
+        }
+        #formular-oferta button {
+            padding: 12px 25px;
+            border-radius: 25px;
+            background: #c6a64f;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        #formular-oferta button:hover {
+            background: #d7b65c;
+        }
+
+        /* ===== PORTOFOLIU GRID ===== */
+        #preview-portofoliu {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        #preview-portofoliu .galerie {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+        #preview-portofoliu .galerie img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+        #preview-portofoliu .galerie img:hover {
+            transform: scale(1.05);
+            filter: brightness(1.15);
+        }
+
+        /* ===== TESTIMONIALE ===== */
+        #testimoniale {
+            padding: 40px 20px;
+            background: #fafafa;
+            text-align: center;
+        }
+        #testimoniale .pachete {
+            justify-content: center;
+        }
+
+        /* ===== CONTACT RAPID ===== */
+        #contact-rapid {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #f0f0f0;
+            border-radius: 12px;
+            margin: 60px auto;
+            max-width: 700px;
+        }
+        #contact-rapid a {
+            color: #c6a64f;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        #contact-rapid a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #111;
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <video autoplay muted loop playsinline class="hero-video">
+        <source src="video-hero.mp4" type="video/mp4">
+        Browser-ul tău nu suportă video.
+    </video>
+    <div class="hero-text">
+        <h1>Lucian</h1>
+        <p>Fotograf Studio & Evenimente</p>
+        <button onclick="location.href='portofoliu.html'">Vezi Portofoliu</button>
+    </div>
+</header>
+
+<nav class="sticky">
+    <a href="index.html" class="active">Acasă</a>
+    <a href="studio.html">Studio</a>
+    <a href="event.html">Event</a>
+</nav>
+
+<section id="despre">
+    <h2>Bine ai venit!</h2>
+    <p>Sunt Lucian, fotograf pasionat de surprinderea emoțiilor autentice din cele mai importante momente ale tale. 
+       Alege Studio sau Event pentru detalii și oferte speciale.</p>
+</section>
+
+<section id="alege">
+    <div class="sectiune-card">
+        <h2>Ce tip de fotografiere vrei?</h2>
+        <div class="pachete">
+            <div class="pachet">
+                <h3>Studio</h3>
+                <p>Ședințe foto portret, familie, copii și bebeluși.</p>
+                <button onclick="location.href='studio.html'">Vezi Studio</button>
+
+            </div>
+            <div class="pachet">
+                <h3>Event</h3>
+                <p>Nunți, botezuri și petreceri private, surprinse cu pasiune.</p>
+                <button onclick="location.href='event.html'">Vezi Event</button>
+            </div>
+        </div>
+
+        <div class="btn-oferta-container">
+            <button id="afiseaza-formular" class="toggle-btn">Solicită ofertă personalizată</button>
+        </div>
+
+        <div id="formular-oferta">
+            <div class="formular-content">
+                <h2>Solicită o ofertă personalizată!</h2>
+                <p>Completează formularul de mai jos și te vom contacta cu o ofertă exact pentru nevoile tale.</p>
+            <!--    <form action="trimite_oferta.php" method="POST">
+                <div class="form-group">
+                    <label for="nume">Nume complet</label>
+                    <input type="text" id="nume" name="nume" placeholder="Ex: Lucian Popescu" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Ex: exemplu@mail.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefon">Telefon</label>
+                    <input type="tel" id="telefon" name="telefon" placeholder="Ex: 0712 345 678" required>
+                </div>
+                <div class="form-group">
+                    <label for="tip_fotografie">Tip de fotografie</label>
+                    <select id="tip_fotografie" name="tip_fotografie" required>
+                        <option value="">Alege...</option>
+                        <option value="studio">Studio</option>
+                        <option value="eveniment">Eveniment</option>
+                        <option value="alte">Alte</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mesaj">Mesaj / Detalii suplimentare</label>
+                    <textarea id="mesaj" name="mesaj" rows="4" placeholder="Ex: Data evenimentului, locația, alte detalii..."></textarea>
+                </div>
+                <button type="submit">Trimite cererea</button>
+            </form> -->
+			<form action="https://formsubmit.co/Dragomirlucian1993@gmail.com" method="POST">
+  <div class="form-group">
+    <label for="nume">Nume complet</label>
+    <input type="text" id="nume" name="nume" placeholder="Ex: Lucian Popescu" required>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Ex: exemplu@mail.com" required>
+  </div>
+  <div class="form-group">
+    <label for="telefon">Telefon</label>
+    <input type="tel" id="telefon" name="telefon" placeholder="Ex: 0712 345 678" required>
+  </div>
+  <div class="form-group">
+    <label for="tip_fotografie">Tip de fotografie</label>
+    <select id="tip_fotografie" name="tip_fotografie" required>
+      <option value="">Alege...</option>
+      <option value="studio">Studio</option>
+      <option value="eveniment">Eveniment</option>
+      <option value="alte">Alte</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="mesaj">Mesaj / Detalii suplimentare</label>
+    <textarea id="mesaj" name="mesaj" rows="4" placeholder="Ex: Data evenimentului, locația, alte detalii..."></textarea>
+  </div>
+
+  <!-- Dezactivează captcha-ul FormSubmit -->
+  <input type="hidden" name="_captcha" value="false">
+
+  <!-- Poți adăuga un mesaj de redirect după trimitere -->
+  <input type="hidden" name="_next" value="https://siteultau.ro/multumesc.html">
+
+  <button type="submit">Trimite cererea</button>
+</form>
+
+			
+			
+        </div>
+    </div>
+	</div>
+
+</section>
+
+<section id="testimoniale">
+    <h2>Ce spun clienții mei</h2>
+    <div class="pachete">
+        <div class="pachet">
+            <p>"Lucian a surprins momentele noastre cu o sensibilitate incredibilă. Fotografiile sunt perfecte!"</p>
+            <h4>- Ana M.</h4>
+        </div>
+        <div class="pachet">
+            <p>"Profesionalism, răbdare și creativitate la fiecare ședință foto."</p>
+            <h4>- George D.</h4>
+        </div>
+        <div class="pachet">
+            <p>"Rezultatele au depășit așteptările noastre. Recomand cu încredere!"</p>
+            <h4>- Ioana P.</h4>
+        </div>
+    </div>
+</section>
+
+<section id="preview-portofoliu">
+    <h2>Portofoliu</h2>
+    <div class="galerie">
+        <img src="images/img1.jpg" alt="Preview 1">
+        <img src="images/img2.jpg" alt="Preview 2">
+        <img src="images/img3.jpg" alt="Preview 3">
+        <img src="images/img4.jpg" alt="Preview 4">
+    </div>
+    <div style="text-align:center; margin-top: 20px;">
+        <button onclick="location.href='portofoliu.html'">Vezi tot portofoliul</button>
+    </div>
+</section>
+
+
+<section id="contact-rapid">
+    <h2>Hai să vorbim!</h2>
+    <p>Email: <a href="mailto:contact@lucian.ro">contact@lucian.ro</a></p>
+    <p>Telefon: <a href="tel:+407XXXXXXXX">+40 7XX XXX XXX</a></p>
+    <p>Facebook: <a href="facebook_lucian">Lucian Dragomir</a></p>
+    <p>Instagram: <a href="instagram_lucian">Lucica</a></p>
+</section>
+
+<footer>
+    <p>&copy; 2025 Lucian | Toate drepturile rezervate</p>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById('afiseaza-formular');
+    const formular = document.getElementById('formular-oferta');
+
+    btn.addEventListener('click', () => {
+        const esteAscuns = !formular.classList.contains('show');
+
+        if (esteAscuns) {
+            formular.style.display = "block";
+            setTimeout(() => {
+                formular.classList.add('show');
+            }, 10);
+            btn.textContent = "Ascunde formularul";
+            setTimeout(() => {
+                formular.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 400);
+        } else {
+            formular.classList.remove('show');
+            setTimeout(() => {
+                formular.style.display = "none";
+            }, 600);
+            btn.textContent = "Solicită ofertă personalizată";
+        }
+    });
+});
+</script>
+
+</body>
+</html>

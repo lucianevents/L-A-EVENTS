@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lucian - Portofoliu Foto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Portofoliu</h1>
+    <p>Nunți • Botezuri • Studio • Portrete</p>
+  </header>
+
+  <!-- NAV -->
+  <nav class="sticky">
+    <a href="index.html">Acasă</a>
+    <a href="studio.html">Studio</a>
+    <a href="event.html">Event</a>
+    <a href="portofoliu.html" class="active">Portofoliu</a>
+  </nav>
+
+  <!-- FILTRU CATEGORII -->
+  <section id="filtru">
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="toate">Toate</button>
+      <button class="filter-btn" data-filter="nunta">Nunți</button>
+      <button class="filter-btn" data-filter="botez">Botezuri</button>
+      <button class="filter-btn" data-filter="studio">Studio</button>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section id="portofoliu">
+    <div class="galerie-grid">
+      <!-- Nunți -->
+      <img src="poze/nunta1.jpg" alt="Nuntă 1" class="foto nunta" />
+      <img src="poze/nunta2.jpg" alt="Nuntă 2" class="foto nunta" />
+      <img src="poze/nunta3.jpg" alt="Nuntă 3" class="foto nunta" />
+
+      <!-- Botezuri -->
+      <img src="poze/botez1.jpg" alt="Botez 1" class="foto botez" />
+      <img src="poze/botez2.jpg" alt="Botez 2" class="foto botez" />
+
+      <!-- Studio -->
+      <img src="poze/studio1.jpg" alt="Studio 1" class="foto studio" />
+      <img src="poze/studio2.jpg" alt="Studio 2" class="foto studio" />
+      <img src="poze/studio3.jpg" alt="Studio 3" class="foto studio" />
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Lucian | Toate drepturile rezervate</p>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox">
+    <span class="close-btn" id="closeBtn">✕</span>
+    <span class="arrow left" id="prevBtn">❮</span>
+    <img id="lightbox-img" src="" alt="Imagine mărire" />
+    <span class="arrow right" id="nextBtn">❯</span>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    // FILTRARE CATEGORII
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const fotos = document.querySelectorAll('.foto');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelector('.filter-btn.active').classList.remove('active');
+        btn.classList.add('active');
+
+        const categorie = btn.getAttribute('data-filter');
+        fotos.forEach(foto => {
+          foto.style.display = categorie === 'toate' || foto.classList.contains(categorie) ? 'block' : 'none';
+        });
+      });
+    });
+
+    // LIGHTBOX
+    const images = document.querySelectorAll('.galerie-grid img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('closeBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    let currentIndex = 0;
+
+    function showImage(index) {
+      if (index < 0) index = images.length - 1;
+      if (index >= images.length) index = 0;
+      currentIndex = index;
+      lightboxImg.src = images[currentIndex].src;
+      lightbox.style.display = 'flex';
+    }
+
+    images.forEach((img, index) => {
+      img.addEventListener('click', () => showImage(index));
+    });
+
+    closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
+    nextBtn.addEventListener('click', () => showImage(currentIndex + 1));
+    prevBtn.addEventListener('click', () => showImage(currentIndex - 1));
+
+    document.addEventListener('keydown', e => {
+      if (lightbox.style.display === 'flex') {
+        if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+        if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+        if (e.key === 'Escape') lightbox.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

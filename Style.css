@@ -1,0 +1,446 @@
+/* ========================= L U C I A N F O T O G R A F Stil modern & profesional ========================= */
+
+/* ===== GENERAL ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Lora', serif; color: #222; background-color: #f7f7f7; line-height: 1.7; }
+h1, h2, h3 { font-family: 'Poppins', sans-serif; font-weight: 600; }
+img { max-width: 100%; height: auto; }
+
+/* ===== HEADER ===== */
+header { background: linear-gradient(to bottom, #111, #1a1a1a); color: white; text-align: center; padding: 70px 20px; }
+header h1 { font-size: 2.8em; letter-spacing: 2px; text-transform: uppercase; position: relative; display: inline-block; }
+header h1::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 70px; height: 3px; background-color: #c6a64f; border-radius: 2px; }
+header p { font-size: 1.2em; color: #c6a64f; margin-top: 25px; }
+
+/* ===== NAVIGATION ===== */
+nav { background-color: #111; display: flex; justify-content: center; flex-wrap: wrap; position: sticky; top: 0; z-index: 1000; }
+nav a { color: #eee; padding: 15px 25px; text-decoration: none; font-family: 'Poppins', sans-serif; font-weight: 500; letter-spacing: 0.5px; transition: color 0.3s ease, background 0.3s ease; }
+nav a:hover { background-color: #c6a64f; color: #111; }
+
+/* ===== SECTION GENERAL ===== */
+section { max-width: 1100px; margin: 80px auto; padding: 0 20px; animation: fadeInUp 0.8s ease both; }
+h2 { text-align: center; font-size: 2em; margin-bottom: 40px; color: #c6a64f; letter-spacing: 1px; }
+
+/* ===== PACKAGES ===== */
+.pachete { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+.pachet { background-color: white; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); padding: 30px; width: 320px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.pachet:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+.pachet h3 { color: #c6a64f; margin-bottom: 15px; font-size: 1.3em; }
+.pachet p { font-size: 0.95em; color: #555; margin-bottom: 15px; }
+.pachet h4 { color: #111; font-weight: bold; margin-top: 10px; }
+
+/* ===== BUTTON ===== */
+button { background: linear-gradient(135deg, #c6a64f, #b2923f); color: #111; border: none; border-radius: 25px; padding: 10px 25px; font-family: 'Poppins', sans-serif; font-weight: 500; cursor: pointer; transition: all 0.3s ease; }
+button:hover { background: linear-gradient(135deg, #d7b65c, #c6a64f); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(198,166,79,0.4); }
+
+/* ===== GALLERY ===== */
+.galerie { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+.galerie img { width: 100%; border-radius: 10px; height: 250px; object-fit: cover; cursor: pointer; transition: transform 0.4s ease, box-shadow 0.4s ease; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+.galerie img:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+
+/* ===== LIGHTBOX ===== */
+.lightbox { position: fixed; display: none; justify-content: center; align-items: center; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(5px); z-index: 1000; }
+.lightbox img { max-width: 90%; max-height: 85%; border-radius: 12px; box-shadow: 0 0 25px rgba(255,255,255,0.1); animation: zoomIn 0.4s ease; }
+@keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.close-btn { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 2.5em; cursor: pointer; user-select: none; transition: color 0.3s; }
+.close-btn:hover { color: #c6a64f; }
+.arrow { position: absolute; top: 50%; font-size: 3em; color: #fff; cursor: pointer; user-select: none; transform: translateY(-50%); transition: color 0.3s; }
+.arrow.left { left: 40px; }
+.arrow.right { right: 40px; }
+.arrow:hover { color: #c6a64f; }
+
+/* ===== CONTACT ===== */
+.contact { text-align: center; margin-top: 40px; }
+.contact p { font-size: 1.1em; color: #333; margin-bottom: 10px; }
+.contact a { color: #c6a64f; text-decoration: none; font-weight: 500; }
+.contact a:hover { text-decoration: underline; }
+
+/* ===== FOOTER ===== */
+footer { background: #111; color: #aaa; text-align: center; padding: 30px 15px; font-size: 0.9em; margin-top: 60px; }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    header h1 { font-size: 2.2em; }
+    section { margin: 50px auto; }
+    .pachet { width: 90%; }
+    .galerie img { height: 200px; }
+    .arrow { font-size: 2em; }
+    .close-btn { font-size: 2em; top: 20px; right: 25px; }
+}
+
+/* =========================
+   PORTOFOLIU SPECIFIC
+   ========================= */
+#portofoliu .galerie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+#portofoliu .galerie-grid img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#portofoliu .galerie-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* =========================
+   FILTRU CATEGORII PORTOFOLIU
+   ========================= */
+#filtru .filter-buttons {
+    display: flex;
+    justify-content: center; /* centru */
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+/* Stil specific filtrelor, ignorând global button */
+#filtru .filter-buttons .filter-btn {
+    all: unset; /* elimin toate stilurile mostenite de la button global */
+    display: inline-block;
+    text-align: center;
+    background-color: #c6a64f;
+    color: #111;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    padding: 10px 22px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+#filtru .filter-buttons .filter-btn:hover:not(.active) {
+    background-color: #e0c869;
+    color: #111;
+}
+
+#filtru .filter-buttons .filter-btn.active {
+    background-color: #111;
+    color: #c6a64f;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+
+
+/* LIGHTBOX */
+#lightbox {
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.95);
+    z-index: 1000;
+}
+
+#lightbox img {
+    max-width: 90%;
+    max-height: 85%;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(255,255,255,0.2);
+}
+
+#lightbox .close-btn {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 2em;
+    color: #fff;
+    cursor: pointer;
+}
+
+#lightbox .arrow {
+    position: absolute;
+    top: 50%;
+    font-size: 2.5em;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+    transform: translateY(-50%);
+}
+
+#lightbox .arrow.left { left: 30px; }
+#lightbox .arrow.right { right: 30px; }
+
+
+
+.oferta-formular {
+    background-color: #f7f7f7;
+    border-radius: 12px;
+    padding: 50px 20px;
+    max-width: 700px;
+    margin: 50px auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.oferta-formular h2 {
+    color: #c6a64f;
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.oferta-formular p {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.oferta-formular form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #222;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #c6a64f;
+    outline: none;
+}
+
+.oferta-formular button {
+    background-color: #c6a64f;
+    color: #111;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.oferta-formular button:hover {
+    background-color: #b2923f;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(198,166,79,0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .oferta-formular {
+        padding: 30px 15px;
+    }
+}
+
+
+
+
+/* ===== OFERTA PERSONALIZATA ===== */
+.hidden {
+    display: none;
+}
+
+.toggle-btn {
+    background-color: #c6a64f;
+    color: #111;
+    border: none;
+    border-radius: 25px;
+    padding: 15px 35px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.toggle-btn:hover {
+    background-color: #b2923f;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(198,166,79,0.4);
+}
+
+/* Păstrează stilul formularului */
+#formular-oferta {
+    background-color: #f7f7f7;
+    border-radius: 12px;
+    padding: 50px 20px;
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+#formular-oferta .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+#formular-oferta label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+#formular-oferta input,
+#formular-oferta select,
+#formular-oferta textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    font-family: 'Poppins', sans-serif;
+}
+
+#formular-oferta button[type="submit"] {
+    background: linear-gradient(135deg, #c6a64f, #b2923f);
+    color: #111;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#formular-oferta button[type="submit"]:hover {
+    background: linear-gradient(135deg, #d7b65c, #c6a64f);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(198,166,79,0.4);
+}
+
+
+.btn-oferta-container {
+    text-align: center;
+    margin-top: 40px;  /* spațiu între carduri și buton */
+}
+
+.toggle-btn {
+    background-color: #c6a64f;
+    color: #111;
+    border: none;
+    border-radius: 30px;
+    padding: 15px 45px;
+    font-size: 1.2em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(198,166,79,0.4);
+}
+
+.toggle-btn:hover {
+    background-color: #b2923f;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(198,166,79,0.6);
+}
+
+/* ===== FORMULAR OFERTĂ — FINAL SMOOTH & CURAT ===== */
+#formular-oferta {
+  display: none; /* complet ascuns inițial */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+#formular-oferta.show {
+  display: block; /* devine vizibil */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* conținutul interior apare lin */
+#formular-oferta .formular-content {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#formular-oferta.show .formular-content {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+
+#preview-portofoliu .galerie {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+#preview-portofoliu .galerie img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+#preview-portofoliu .galerie img:hover {
+    transform: scale(1.05);
+}
+
+
+.sectiune-card {
+    background-color: #F5F5F5; /* fundal cald, deschis */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    max-width: 1000px;
+    margin: 40px auto; /* centru pe pagină */
+}
+
+.sectiune-card h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.sectiune-card .pachete {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.sectiune-card .pachet {
+    flex: 1 1 250px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.sectiune-card .pachet button {
+    margin-top: 15px;
+}

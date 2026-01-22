@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucian - Fotograf Evenimente</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <h1>Lucian</h1>
+    <p>Fotograf Evenimente • Nunți • Botezuri • Petreceri</p>
+</header>
+
+<!-- NAV -->
+<nav class="sticky">
+    <a href="index.html">Acasă</a>
+    <a href="studio.html">Studio</a>
+    <a href="event.html"class="active">Event</a>
+	<a href="portofoliu.html">Portofoliu</a>
+</nav>
+
+<!-- DESPRE -->
+<section id="despre">
+    <h2>Despre Evenimente</h2>
+    <p>Capturăm cele mai frumoase momente din nunți, botezuri și petreceri. 
+    Fotografiile surprind emoția, bucuria și energia fiecărui eveniment.</p>
+</section>
+
+<!-- PACHETE -->
+<section id="pachete">
+    <h2>Pachete Eveniment</h2>
+    <div class="pachete">
+        <div class="pachet">
+            <h3>Basic Event</h3>
+            <p>✔ 3 ore fotografiere<br>✔ 50 fotografii editate<br>✔ Galerie online</p>
+            <h4>400 RON</h4>
+            <button>Rezervă</button>
+        </div>
+
+        <div class="pachet">
+            <h3>Premium Event</h3>
+            <p>✔ 6 ore fotografiere<br>✔ 150 fotografii editate<br>✔ Stick USB personalizat</p>
+            <h4>800 RON</h4>
+            <button>Rezervă</button>
+        </div>
+
+        <div class="pachet">
+            <h3>Deluxe Event</h3>
+            <p>✔ Zi întreagă fotografiere<br>✔ 300 fotografii editate<br>✔ Album foto premium</p>
+            <h4>1300 RON</h4>
+            <button>Rezervă</button>
+        </div>
+    </div>
+</section>
+
+<!-- GALERIE -->
+<section id="galerie">
+    <h2>Galerie Eveniment</h2>
+    <div class="galerie">
+        <img src="poze/event1.jpg" alt="Event 1">
+        <img src="poze/event2.jpg" alt="Event 2">
+        <img src="poze/event3.jpg" alt="Event 3">
+        <img src="poze/event4.jpg" alt="Event 4">
+        <img src="poze/event5.jpg" alt="Event 5">
+        <img src="poze/event6.jpg" alt="Event 6">
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p>📧 Email: <a href="mailto:lucianfoto@email.com">lucianfoto@email.com</a></p>
+    <p>📱 Telefon: <strong>07xx xxx xxx</strong></p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2025 Lucian | Toate drepturile rezervate</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+    <span class="close-btn" id="closeBtn">✕</span>
+    <span class="arrow left" id="prevBtn">❮</span>
+    <img id="lightbox-img" src="">
+    <span class="arrow right" id="nextBtn">❯</span>
+</div>
+
+<!-- SCRIPT LIGHTBOX -->
+<script>
+const images = document.querySelectorAll('.galerie img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeBtn = document.getElementById('closeBtn');
+const nextBtn = document.getElementById('nextBtn');
+const prevBtn = document.getElementById('prevBtn');
+let currentIndex = 0;
+
+function showImage(index){
+    if(index<0) index=images.length-1;
+    if(index>=images.length) index=0;
+    currentIndex=index;
+    lightboxImg.src=images[currentIndex].src;
+    lightbox.style.display='flex';
+}
+
+images.forEach((img,index)=>{ 
+    img.addEventListener('click',()=>showImage(index)); 
+});
+
+closeBtn.addEventListener('click',()=>lightbox.style.display='none');
+nextBtn.addEventListener('click',()=>showImage(currentIndex+1));
+prevBtn.addEventListener('click',()=>showImage(currentIndex-1));
+
+lightbox.addEventListener('click',(e)=>{ 
+    if(e.target===lightbox) lightbox.style.display='none'; 
+});
+
+document.addEventListener('keydown',(e)=>{
+    if(lightbox.style.display==='flex'){
+        if(e.key==='ArrowRight') showImage(currentIndex+1);
+        if(e.key==='ArrowLeft') showImage(currentIndex-1);
+        if(e.key==='Escape') lightbox.style.display='none';
+    }
+});
+</script>
+
+</body>
+</html>

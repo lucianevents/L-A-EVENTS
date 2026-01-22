@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucian - Studio Foto</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+<h1>Lucian</h1>
+<p>Fotograf Studio • Portrete • Ședințe foto</p>
+</header>
+
+<nav class="sticky">
+<a href="index.html">Acasă</a>
+<a href="studio.html"class="active">Studio</a>
+<a href="event.html">Event</a>
+<a href="portofoliu.html">Portofoliu</a>
+</nav>
+
+<section id="despre">
+<h2>Despre Studio</h2>
+<p>În Studio surprind portrete, ședințe foto de familie, bebeluși și alte momente speciale. 
+Fiecare ședință este personalizată pentru imagini naturale și frumoase.</p>
+</section>
+
+<section id="pachete">
+<h2>Pachete Studio</h2>
+<div class="pachete">
+<div class="pachet">
+<h3>Basic Studio</h3>
+<p>✔ 1 oră fotografiere<br>✔ 20 fotografii editate<br>✔ Galerie online</p>
+<h4>200 RON</h4>
+<button>Rezervă</button>
+</div>
+
+<div class="pachet">
+<h3>Premium Studio</h3>
+<p>✔ 2 ore fotografiere<br>✔ 50 fotografii editate<br>✔ Stick USB personalizat</p>
+<h4>400 RON</h4>
+<button>Rezervă</button>
+</div>
+
+<div class="pachet">
+<h3>Deluxe Studio</h3>
+<p>✔ 3 ore fotografiere<br>✔ 100 fotografii editate<br>✔ Album foto premium</p>
+<h4>700 RON</h4>
+<button>Rezervă</button>
+</div>
+</div>
+</section>
+
+<section id="galerie">
+<h2>Galerie Studio</h2>
+<div class="galerie">
+<img src="poze/studio1.jpg" alt="Studio 1">
+<img src="poze/studio2.jpg" alt="Studio 2">
+<img src="poze/studio3.jpg" alt="Studio 3">
+</div>
+</section>
+
+<section id="contact" class="contact">
+<h2>Contact</h2>
+<p>📧 Email: <a href="mailto:lucianfoto@email.com">lucianfoto@email.com</a></p>
+<p>📱 Telefon: <strong>07xx xxx xxx</strong></p>
+</section>
+
+<footer>
+<p>&copy; 2025 Lucian | Toate drepturile rezervate</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+<span class="close-btn" id="closeBtn">✕</span>
+<span class="arrow left" id="prevBtn">❮</span>
+<img id="lightbox-img" src="">
+<span class="arrow right" id="nextBtn">❯</span>
+</div>
+
+<script>
+const images = document.querySelectorAll('.galerie img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeBtn = document.getElementById('closeBtn');
+const nextBtn = document.getElementById('nextBtn');
+const prevBtn = document.getElementById('prevBtn');
+let currentIndex = 0;
+
+function showImage(index){
+if(index<0) index=images.length-1;
+if(index>=images.length) index=0;
+currentIndex=index;
+lightboxImg.src=images[currentIndex].src;
+lightbox.style.display='flex';
+}
+
+images.forEach((img,index)=>{ img.addEventListener('click',()=>showImage(index)); });
+
+closeBtn.addEventListener('click',()=>lightbox.style.display='none');
+nextBtn.addEventListener('click',()=>showImage(currentIndex+1));
+prevBtn.addEventListener('click',()=>showImage(currentIndex-1));
+lightbox.addEventListener('click',(e)=>{ if(e.target===lightbox) lightbox.style.display='none'; });
+document.addEventListener('keydown',(e)=>{
+if(lightbox.style.display==='flex'){
+if(e.key==='ArrowRight') showImage(currentIndex+1);
+if(e.key==='ArrowLeft') showImage(currentIndex-1);
+if(e.key==='Escape') lightbox.style.display='none';
+}});
+</script>
+
+</body>
+</html>
